@@ -4,6 +4,7 @@ import android.arch.core.executor.testing.InstantTaskExecutorRule
 import android.arch.lifecycle.Observer
 import com.nhaarman.mockito_kotlin.doReturn
 import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
@@ -34,6 +35,6 @@ class PresenterTest {
 
     presenter.onCreate()
 
-    personObserver.onChanged(sampleData)
+    verify(personObserver).onChanged(sampleData)
   }
 }
