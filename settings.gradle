@@ -1,4 +1,5 @@
 include ':1_rxjava',
     ':2_coroutines_rxjava',
     ':3_rxjava_coroutines',
-    ':4_coroutines'
+    ':4_coroutines',
+    ':5_coroutines_advanced'

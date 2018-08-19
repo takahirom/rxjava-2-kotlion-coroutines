@@ -4,9 +4,10 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.experimental.rx2.await
 import kotlin.coroutines.experimental.CoroutineContext
 
-class Presenter(
+class ViewModel(
     private val api: Api = Api(),
     private val coroutineContext: CoroutineContext = CommonPool
 ) {
@@ -15,7 +16,7 @@ class Presenter(
 
   fun onCreate() {
     launch(coroutineContext) {
-      val persons = api.fetchPersons()
+      val persons = api.fetchPersons().await()
       mutablePersons.postValue(persons)
     }
   }
