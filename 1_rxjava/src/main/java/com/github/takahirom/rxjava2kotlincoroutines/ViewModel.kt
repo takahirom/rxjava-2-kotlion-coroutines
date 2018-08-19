@@ -5,7 +5,7 @@ import android.arch.lifecycle.MutableLiveData
 import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
 
-class Presenter(
+class ViewModel(
     private val api: Api = Api(),
     private val scheduler: Scheduler = Schedulers.io()
 ) {

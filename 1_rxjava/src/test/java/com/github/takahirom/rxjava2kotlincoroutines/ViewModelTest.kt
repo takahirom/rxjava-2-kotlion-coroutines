@@ -11,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
 import org.junit.Rule
 import org.junit.Test
 
-class PresenterTest {
+class ViewModelTest {
   @get:Rule
   val instantTaskExecutorRule = InstantTaskExecutorRule()
 
@@ -29,11 +29,11 @@ class PresenterTest {
                 sampleData
             )
         )
-    val presenter = Presenter(api = api, scheduler = Schedulers.trampoline())
+    val viewModel = ViewModel(api = api, scheduler = Schedulers.trampoline())
     val personObserver: Observer<List<Person>> = mock()
-    presenter.persons.observeForever(personObserver)
+    viewModel.persons.observeForever(personObserver)
 
-    presenter.onCreate()
+    viewModel.onCreate()
 
     verify(personObserver).onChanged(sampleData)
   }

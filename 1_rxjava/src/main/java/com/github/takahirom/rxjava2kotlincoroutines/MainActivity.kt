@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.content_main.persons_recycler
 
 class MainActivity : AppCompatActivity() {
-  private lateinit var presenter: Presenter
+  private lateinit var viewModel: ViewModel
   private val groupAdapter = GroupAdapter<ViewHolder>()
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,9 +19,9 @@ class MainActivity : AppCompatActivity() {
     setContentView(R.layout.activity_main)
     setSupportActionBar(toolbar)
 
-    presenter = Presenter()
-    presenter.onCreate()
-    presenter.persons.observe(this, Observer { persons ->
+    viewModel = ViewModel()
+    viewModel.onCreate()
+    viewModel.persons.observe(this, Observer { persons ->
       persons ?: return@Observer
       groupAdapter.update(persons.map(::PersonItem))
     })

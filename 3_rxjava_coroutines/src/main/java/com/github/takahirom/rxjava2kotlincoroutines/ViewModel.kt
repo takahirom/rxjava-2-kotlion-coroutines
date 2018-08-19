@@ -8,7 +8,7 @@ import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.rx2.rxSingle
 import kotlin.coroutines.experimental.CoroutineContext
 
-class Presenter(
+class ViewModel(
     private val api: Api = Api(),
     private val scheduler: Scheduler = Schedulers.io(),
     val coroutineContext: CoroutineContext = CommonPool

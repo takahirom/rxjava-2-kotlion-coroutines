@@ -15,7 +15,7 @@ import org.junit.Rule
 import org.junit.Test
 import kotlin.coroutines.experimental.CoroutineContext
 
-class PresenterTest {
+class ViewModelTest {
   @get:Rule
   val instantTaskExecutorRule = InstantTaskExecutorRule()
 
@@ -33,11 +33,11 @@ class PresenterTest {
                 sampleData
             )
         )
-    val presenter = ViewModel(api = api, coroutineContext = DirectCoroutineContext())
+    val viewModel = ViewModel(api = api, coroutineContext = DirectCoroutineContext())
     val personObserver: Observer<List<Person>> = mock()
-    presenter.persons.observeForever(personObserver)
+    viewModel.persons.observeForever(personObserver)
 
-    presenter.onCreate()
+    viewModel.onCreate()
 
     verify(personObserver).onChanged(sampleData)
   }

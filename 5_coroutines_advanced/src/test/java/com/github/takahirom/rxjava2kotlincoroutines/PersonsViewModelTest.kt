@@ -34,10 +34,10 @@ class PersonsViewModelTest {
         .doReturn(
             sampleData
         )
-    val presenter = PersonsViewModel(api = api, coroutineContext = DirectCoroutineContext())
+    val viewModel = PersonsViewModel(api = api, coroutineContext = DirectCoroutineContext())
     val personObserver: Observer<List<Person>> = mock()
 
-    presenter.persons.observeForever(personObserver)
+    viewModel.persons.observeForever(personObserver)
 
     verify(personObserver).onChanged(sampleData)
   }
@@ -49,12 +49,12 @@ class PersonsViewModelTest {
         .doThrow(
             sampleException
         )
-    val presenter = PersonsViewModel(api = api, coroutineContext = DirectCoroutineContext())
+    val viewModel = PersonsViewModel(api = api, coroutineContext = DirectCoroutineContext())
     val personObserver: Observer<List<Person>> = mock()
     val errorObserver: Observer<Exception> = mock()
 
-    presenter.persons.observeForever(personObserver)
-    presenter.errors.observeForever(errorObserver)
+    viewModel.persons.observeForever(personObserver)
+    viewModel.errors.observeForever(errorObserver)
 
     verify(personObserver, never()).onChanged(any())
     verify(errorObserver).onChanged(sampleException)
