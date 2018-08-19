@@ -41,11 +41,13 @@ class PresenterTest {
 
     verify(personObserver).onChanged(sampleData)
   }
+
   class DirectCoroutineContext : CoroutineDispatcher(), Delay {
     override fun scheduleResumeAfterDelay(time: Long, unit: TimeUnit,
         continuation: CancellableContinuation<Unit>) {
       continuation.resume(Unit)
     }
+
     override fun dispatch(context: CoroutineContext, block: Runnable) {
       block.run()
     }

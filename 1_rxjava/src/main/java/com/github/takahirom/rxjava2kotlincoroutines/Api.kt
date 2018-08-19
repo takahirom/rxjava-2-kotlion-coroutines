@@ -13,11 +13,12 @@ class Api {
       .addConverterFactory(GsonConverterFactory.create())
       .build()
 
-  val api:Service = retrofit.create(Service::class.java)
+  val api: Service = retrofit.create(Service::class.java)
+
   interface Service {
     @GET("api?inc=name,email&results=20&noinfo")
     fun listPersons(): Single<Response>
   }
 
-  fun fetchPersons():Single<List<Person>> = api.listPersons().map { it.results }
+  fun fetchPersons(): Single<List<Person>> = api.listPersons().map { it.results }
 }
