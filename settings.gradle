@@ -1,1 +1,1 @@
-include ':1_rxjava', ':2_coroutines_rxjava'
+include ':1_rxjava', ':2_coroutines_rxjava', ':3_rxjava_coroutines'
